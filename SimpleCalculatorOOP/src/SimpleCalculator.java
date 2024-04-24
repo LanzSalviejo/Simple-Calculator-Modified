@@ -23,22 +23,22 @@ public class SimpleCalculator {
 		Scanner input = new Scanner(System.in);
 
 		// States the variables used for calculations
-		double number1, number2;
-		char operator;
+		double[] number = new double[2];
+ 		char operator;
 		
 
 		// Variable that asks user if they would like to input another expression
-		char ans = 'y';
+		char ans;
 
 		do {
 			// Program segment that takes the users input
-			System.out.print("\nEnter a methematical expression: ");
-			number1 = input.nextDouble();
+			System.out.print("\nEnter a mathematical expression: ");
+			number[0] = input.nextDouble();
 			operator = input.next().charAt(0);
-			number2 = input.nextDouble();
+			number[1] = input.nextDouble();
 			
-			Calculator calculate = new Calculator(number1, number2);
-
+			Calculator calculate = new Calculator(number[0], number[1]);
+			
 			// Program segment that converts the users input a proper mathematical equation
 			switch (operator) {
 
@@ -47,40 +47,39 @@ public class SimpleCalculator {
 			case '*':
 			case 'x':
 			case 'X':
-				System.out.println(calculate.multiply(number1, number2));
+				System.out.println(calculate.multiply());
 				break;
 			// Case for division
 			case '/':
-				System.out.println(calculate.divide(number1, number2));
+				System.out.println(calculate.divide());
 				break;
 			// Case for addition
 			case '+':
-				System.out.println(calculate.add(number1, number2));
+				System.out.println(calculate.add());
 				break;
 			// Case for subtraction
 			case '-':
-				System.out.println(calculate.subtract(number1, number2));
+				System.out.println(calculate.subtract());
 				break;
 			// Case for power
 			case '^':
-				System.out.println(calculate.power(number1, number2));
+				System.out.println(calculate.power());
 				break;
 			// Case for modulus
 			case '%':
-				System.out.println(calculate.modulus(number1, number2));
+				System.out.println(calculate.modulus());
 				break;
 			// Default case if the operator entered is invalid
 			default:
 				System.out.println("\nERROR: This expression is invalid, please try again.");
-			}
+			}//switch
 
 			// Asks the user if they would like to input another calculation
 			System.out.print("\nThe number of equations created is now: " + calculate.getEquations());
 			System.out.print("\nEvaluate another expression? (y/n) ");
 			ans = input.next().charAt(0);
-			Character.toLowerCase(ans);
 
-		} while (ans == 'y'); // Answering y will exit the loop
+		} while (Character.toLowerCase(ans) == 'y'); // Answering y will exit the loop
 
 		// Closes the scanner
 		input.close();
@@ -89,5 +88,5 @@ public class SimpleCalculator {
 		System.out.println("\nThank you for using the Simple Calculator!");
 		System.out.println("Written by Lanz Salviejo, Spring 2024");
 	} // main
-
+	
 } // SimpleCalculator

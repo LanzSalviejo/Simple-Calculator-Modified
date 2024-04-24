@@ -16,43 +16,42 @@ public class Calculator {
 		return number2;
 	}//getNumber2
 	
-	public double getEquations() {
+	public int getEquations() {
 		return equations;
 	}//getEquations
 	
-	public double multiply(double n1, double n2) {
+	public double multiply() {
 		equations++;
-		return n1 * n2;
+		return number1 + number2;
 	}//multiply
-	
-	public double divide(double n1, double n2) {
+
+	public double divide() {
 		equations++;
-		try {
-			return n1 / n2;
-		} catch (ArithmeticException e) {
-			System.out.println("Cannot divide by zero");
-			return 0; // returns default value
-		}//trycatch
+		if (number2 == 0) {
+			System.out.println("Cannot divide by 0");
+			return Double.NaN;
+		}
+		return number1 / number2;
 	}//divide
 	
-	public double add(double n1, double n2) {
+	public double add() {
 		equations++;
-		return n1 + n2;
+		return number1 + number2;
 	}//add
 	
-	public double subtract(double n1, double n2) {
+	public double subtract() {
 		equations++;
-		return n1 - n2;
+		return number1 - number2;
 	}//subtract
 	
-	// Calculates power using the pow method in Java's math class API
-	public double power(double n1, double n2) {
+	public double power() {
 		equations++;
-		return Math.pow(n1, n2);
+		return Math.pow(number1, number2);
 	}//power
 	
-	public double modulus(double n1, double n2) {
+	public double modulus() {
 		equations++;
-		return n1 % n2;
+		return number1 % number2;
 	}//modulus
-}
+
+}//Calculator
